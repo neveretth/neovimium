@@ -69,10 +69,4 @@ vim.cmd [[nnoremap r<C-k><C-k> <Cmd>lua require'better-digraphs'.digraphs("norma
 vim.cmd [[vnoremap r<C-k><C-k> <ESC><Cmd>lua require'better-digraphs'.digraphs("visual")<CR>]]
 
 vim.cmd [[nmap <Leader>mf _i==> <ESC> A <==<ESC>]]
-
--- auto-reload files when modified externally
--- vim.o.autoread = true
--- vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
--- 	command = "if mode() != 'c' | checktime | endif",
--- 	pattern = { "*" },
--- })
+vim.cmd [[nmap <Leader>mc :AddFileHeader<cr>]]
