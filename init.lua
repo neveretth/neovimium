@@ -55,14 +55,9 @@ vim.cmd [[nmap <leader>pp :w<cr> :!npx prettier --write % <cr>]]
 vim.cmd [[nmap <leader>jc :w<cr> :!javac % ]]
 vim.cmd [[nmap <leader>jd :!java %:r ]]
 vim.cmd [[nmap <leader>je :TermExec cmd="java %:r"]] -- add <cr> after makes it faster, maybe give it feeler?
--- c/cpp comp & run (kinda odd keys, but it works)
--- vim.cmd[[nmap <leader>jg :w<cr> :!make % ]]
 vim.cmd [[nmap <leader>jv :w<cr> :!make ]]
 vim.cmd [[nmap <leader>jf :!./%:r ]]
 vim.cmd [[nmap <leader>jr :TermExec cmd="./%:r"]] -- add <cr> after makes it faster, maybe give it feeler?
-
--- Testing for calendar.vim
-vim.cmd [[nmap <leader>pc :Calendar<cr>]] -- && rm %:r.aux %:r.log %:r.blg %:r.bcf %:r.bbl %:r.run.xml <cr><cr>]]
 
 vim.cmd [[inoremap <C-k><C-k> <Cmd>lua require'better-digraphs'.digraphs("insert")<CR>]]
 vim.cmd [[nnoremap r<C-k><C-k> <Cmd>lua require'better-digraphs'.digraphs("normal")<CR>]]
@@ -70,3 +65,4 @@ vim.cmd [[vnoremap r<C-k><C-k> <ESC><Cmd>lua require'better-digraphs'.digraphs("
 
 vim.cmd [[nmap <Leader>mf _i==> <ESC> A <==<ESC>]]
 vim.cmd [[nmap <Leader>mc :AddFileHeader<cr>]]
+vim.cmd [[nmap <Leader>ms :AddSectionHeader<cr> <cmd>lua require("Comment.api").toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1)<cr>]]

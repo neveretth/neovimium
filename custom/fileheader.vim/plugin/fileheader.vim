@@ -52,3 +52,4 @@ endif
 
 command! -range=% AddFileHeader call fileheader#add_file_header()
 command! -range=% UpdateFileHeader call fileheader#update_file_header()
+command! -range=% AddSectionHeader call fileheader#add_section_header()

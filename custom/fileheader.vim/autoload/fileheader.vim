@@ -55,6 +55,10 @@ let s:templates = [
   \ '============================================================',
   \ ]
 
+let s:section_templates = [
+  \ '====== SECTION ======',
+  \ ]
+
 function! fileheader#run_command_async(cmd, handler)
   if has('nvim')
     call jobstart(a:cmd, { 'on_stdout': a:handler })
@@ -240,6 +244,22 @@ function! fileheader#add_file_header()
 
     let header = fileheader#get_header(delimiter)
     call append(0, header)
+  else
+    echo 'vim-fileheader: can not found '.&filetype.' filetype delimiter'
+  endif
+endfunction
+
+function! fileheader#add_section_header()
+  let delimiter = get(s:delimiter_map, &filetype)
+
+  if !empty(delimiter)
+    if g:fileheader_author == ''
+      echo 'vim-fileheader: can not found g:fileheader_author value'
+      return
+    endif
+
+    let header = s:section_templates
+    call append(line('.'), header)
   else
     echo 'vim-fileheader: can not found '.&filetype.' filetype delimiter'
   endif
