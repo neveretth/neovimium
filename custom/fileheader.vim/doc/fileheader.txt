@@ -1,6 +1,6 @@
 *fileheader.txt* A Neovim plugin for add and update your authoring information in header comment
 
-Author: Ahonn Jiang <https://github.com/ahonn>
+Author: N. Everett Howard <howard@nth.blue> & Ahonn Jiang <https://github.com/ahonn>
 License: Same terms as Vim itself (see |license|)
 
 CONTENTS                                        *fileheder-contents*

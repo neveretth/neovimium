@@ -33,6 +33,7 @@ let s:delimiter_map = {
   \ 'xml': s:html_style,
   \ 'vue': s:html_style,
   \ 'erlang': s:erlang_style,
+  \ 'tex': s:erlang_style,
   \ 'clojure': s:lisp_style,
   \ 'scheme': s:lisp_style,
   \ }
