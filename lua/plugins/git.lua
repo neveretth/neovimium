@@ -5,12 +5,22 @@ return {
   event = "User AstroGitFile",
   opts = {
     signs = {
-      add = { text = "▎" },
-      change = { text = "▎" },
-      delete = { text = "▎" },
-      topdelete = { text = "契" },
-      changedelete = { text = "▎" },
-      untracked = { text = "▎" },
+      -- ====== new icons ======
+      -- Don't know if I like this or hate this...
+      add = { text = "+" },
+      change = { text = "Δ" },
+      delete = { text = "-" },
+      topdelete = { text = "▬" },
+      changedelete = { text = "-" },
+      untracked = { text = "·" },
+      
+      -- ====== original icons ======
+      -- add = { text = "▎" },
+      -- change = { text = "▎" },
+      -- delete = { text = "▎" },
+      -- topdelete = { text = "契" },
+      -- changedelete = { text = "▎" },
+      -- untracked = { text = "▎" },
     },
   },
 }

@@ -32,7 +32,7 @@ return {
         Null = "NULL",
         Number = "#",
         Object = "",
-        Package = "",
+        Package = "✠",
         Property = "",
         Reference = "",
         Snippet = "",

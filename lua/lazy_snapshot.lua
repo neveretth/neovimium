@@ -1,5 +1,6 @@
 return {
-  { dir = "~/.config/nvim/custom/fileheader.vim", lazy = false },
+  { dir = "~/.config/nvim/custom/fileheader.vim",     lazy = false },
+  { "https://github.com/chrisbra/unicode.vim",        lazy = false },
   { "https://github.com/protex/better-digraphs.nvim", name = "better-digraphs" },
   { "catppuccin/nvim",                                name = "catppuccin" },
   { "AstroNvim/astrotheme",                           version = "^1.1" },
@@ -37,7 +38,6 @@ return {
   { "nvim-telescope/telescope-fzf-native.nvim",       commit = "580b6c48651cabb63455e97d7e131ed557b8c7e2" },
   { "nvim-telescope/telescope.nvim",                  version = "^0.1" },
   { "nvim-tree/nvim-web-devicons",                    commit = "4ec26d67d419c12a4abaea02f1b6c57b40c08d7e" },
-  -- { "nvim-treesitter/nvim-treesitter",             commit = "ba6c55b203748ec099127914d34554a575e051c0" },
   { "nvim-treesitter/nvim-treesitter", },
   { "onsails/lspkind.nvim",                           commit = "c68b3a003483cf382428a43035079f78474cd11e" },
   { "rafamadriz/friendly-snippets",                   commit = "8d91ba2dc2421a54981115f61b914974f938fa77" },
@@ -46,7 +46,6 @@ return {
   { "rebelot/heirline.nvim",                          commit = "b5bbb8b4e4e24dccd4a2f20e38a2be0b58fb7fc5" },
   { "s1n7ax/nvim-window-picker",                      version = "^1" },
   { "saadparwaiz1/cmp_luasnip",                       commit = "18095520391186d634a0045dacaa346291096566" },
-  -- { "stevearc/aerial.nvim",                        commit = "7371322c60120a56bcc833c407de96be42c18172" },
   { "stevearc/aerial.nvim", },
   { "stevearc/dressing.nvim",                         commit = "0e3e1eba147fee6e638ac1ac28f0495bcde17319" },
   { "williamboman/mason-lspconfig.nvim",              commit = "b81c50c4baae7d80b1723b3fa86e814d7754d15b" },
