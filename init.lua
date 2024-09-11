@@ -47,7 +47,7 @@ require("catppuccin").setup {
 vim.cmd [[colorscheme catppuccin-mocha]]
 vim.cmd [[set wrap]]
 
--- ====== BASIC KEYMAPPINGS I'M TOO FUCKING LAZY TO DO PROPERLY ======
+-- ====== VARIOUS KEYMAPPINGS I'M TOO FUCKING LAZY TO DO PROPERLY ======
 -- Tex comp & show
 vim.cmd [[nmap <leader>jl :w<cr> :!make <cr><cr>]]
 vim.cmd [[nmap <leader>jo :!zathura %:r.pdf &<cr><cr>]]
@@ -58,6 +58,7 @@ vim.cmd [[vnoremap r<C-k><C-k> <ESC><Cmd>lua require'better-digraphs'.digraphs("
 
 vim.cmd [[nmap <Leader>mf _i==> <ESC> A <==<ESC>]]
 vim.cmd [[nmap <Leader>mc :AddFileHeader<cr>]]
+
+-- ====== ACTUALLY KIND OF COOL MACROS ======
 -- This is a hell of a macro, I really should make it better, but I almost respect how stupid it is.
-vim.cmd [[nmap <Leader>ms O<ESC>cc====== SECTION ======<ESC> k <SPACE>/eevbc]]
--- vim.cmd [[nmap <Leader>ms O <ESC> :AddSectionHeader<cr> <cmd>lua require("Comment.api").toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1)<cr>]]
+vim.cmd [[nmap <Leader>ms O<ESC>cc====== SECTION ======<ESC> k <SPACE>/_eeevbc]]
