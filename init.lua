@@ -46,10 +46,10 @@ require("catppuccin").setup {
 -- ====== VARIOUS SETTINGS I'M TOO FUCKING LAZY TO DO PROPERLY ======
 vim.cmd [[colorscheme catppuccin-mocha]]
 vim.cmd [[set wrap]]
--- Tex comp & show
 
 -- ====== BASIC KEYMAPPINGS I'M TOO FUCKING LAZY TO DO PROPERLY ======
-vim.cmd [[nmap <leader>jl :w<cr> :!make <cr><cr>]] -- && rm %:r.aux %:r.log %:r.blg %:r.bcf %:r.bbl %:r.run.xml <cr><cr>]]
+-- Tex comp & show
+vim.cmd [[nmap <leader>jl :w<cr> :!make <cr><cr>]]
 vim.cmd [[nmap <leader>jo :!zathura %:r.pdf &<cr><cr>]]
 
 vim.cmd [[inoremap <C-k><C-k> <Cmd>lua require'better-digraphs'.digraphs("insert")<CR>]]
@@ -58,16 +58,6 @@ vim.cmd [[vnoremap r<C-k><C-k> <ESC><Cmd>lua require'better-digraphs'.digraphs("
 
 vim.cmd [[nmap <Leader>mf _i==> <ESC> A <==<ESC>]]
 vim.cmd [[nmap <Leader>mc :AddFileHeader<cr>]]
-vim.cmd [[nmap <Leader>ms O====== SECTION ======<ESC>]]
+-- This is a hell of a macro, I really should make it better, but I almost respect how stupid it is.
+vim.cmd [[nmap <Leader>ms O<ESC>cc====== SECTION ======<ESC> k <SPACE>/eevbc]]
 -- vim.cmd [[nmap <Leader>ms O <ESC> :AddSectionHeader<cr> <cmd>lua require("Comment.api").toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1)<cr>]]
-
--- I don't fucking use this shit anymore
--- -- Prettier
--- vim.cmd [[nmap <leader>pp :w<cr> :!npx prettier --write % <cr>]]
--- -- Java comp & run
--- vim.cmd [[nmap <leader>jc :w<cr> :!javac % ]]
--- vim.cmd [[nmap <leader>jd :!java %:r ]]
--- vim.cmd [[nmap <leader>je :TermExec cmd="java %:r"]] -- add <cr> after makes it faster, maybe give it feeler?
--- vim.cmd [[nmap <leader>jv :w<cr> :!make ]]
--- vim.cmd [[nmap <leader>jf :!./%:r ]]
--- vim.cmd [[nmap <leader>jr :TermExec cmd="./%:r"]] -- add <cr> after makes it faster, maybe give it feeler?
