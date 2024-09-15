@@ -1,3 +1,14 @@
+-- ============================================================
+--    NAME: Neovimium
+--  AUTHOR: N. Everett Howard  <howard@nth.blue>
+-- VERSION: v0.2.1                    CHANGED: 2024-09-15
+-- LICENSE: MIT                       CREATED: 2023-03-13
+-- ============================================================
+-- DESCRIPTION & COMMENTS:                                     
+-- Find further documentation at      
+-- docs.nth.blue/neovimium                                            
+-- ============================================================
+
 if vim.loader then vim.loader.enable() end -- enable vim.loader early if available
 
 for _, source in ipairs {
@@ -61,4 +72,4 @@ vim.cmd [[nmap <Leader>mc :AddFileHeader<cr>]]
 
 -- ====== ACTUALLY KIND OF COOL MACROS ======
 -- This is a hell of a macro, I really should make it better, but I almost respect how stupid it is.
-vim.cmd [[nmap <Leader>ms O<ESC>cc====== SECTION ======<ESC> k <SPACE>/_eeevbc]]
+vim.cmd [[nmap <Leader>ms O<ESC>cc====== @@@ ======<ESC> k <SPACE>/_f@ce]]
