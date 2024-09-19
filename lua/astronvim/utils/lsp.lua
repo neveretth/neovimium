@@ -58,7 +58,8 @@ M.setup_diagnostics = function(signs)
   vim.diagnostic.config(M.diagnostics[vim.g.diagnostics_mode])
 end
 
-M.formatting = user_opts("lsp.formatting", { format_on_save = { enabled = true }, disabled = {} })
+-- ====== FORMATTING ON SAVE/WRITE ======
+M.formatting = user_opts("lsp.formatting", { format_on_save = { enabled = false }, disabled = {} })
 if type(M.formatting.format_on_save) == "boolean" then
   M.formatting.format_on_save = { enabled = M.formatting.format_on_save }
 end
