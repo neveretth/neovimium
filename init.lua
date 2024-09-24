@@ -57,6 +57,11 @@ require("catppuccin").setup {
 -- ====== VARIOUS SETTINGS I'M TOO FUCKING LAZY TO DO PROPERLY ======
 vim.cmd [[colorscheme catppuccin-mocha]]
 vim.cmd [[set wrap]]
+-- resize vs
+vim.cmd [[nnoremap <C-right> :vertical resize -5<cr>]]
+vim.cmd [[nnoremap <C-left> :vertical resize +5<cr>]]
+vim.cmd [[nnoremap <C-down> :resize -5<cr>]]
+vim.cmd [[nnoremap <C-up> :resize +5<cr>]]
 
 -- ====== VARIOUS KEYMAPPINGS I'M TOO FUCKING LAZY TO DO PROPERLY ======
 -- Tex comp & show
