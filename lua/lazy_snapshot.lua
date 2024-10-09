@@ -1,6 +1,7 @@
 return {
   { dir = "~/.config/nvim/custom/fileheader.vim",     lazy = false },
   { "https://github.com/chrisbra/unicode.vim",        lazy = false },
+  { "https://github.com/preservim/vim-pencil",        lazy = false },
   { "https://github.com/protex/better-digraphs.nvim", name = "better-digraphs" },
   { "catppuccin/nvim",                                name = "catppuccin" },
   { "AstroNvim/astrotheme",                           version = "^1.1" },

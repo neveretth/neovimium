@@ -64,6 +64,9 @@ vim.cmd [[nnoremap <C-down> :resize -5<cr>]]
 vim.cmd [[nnoremap <C-up> :resize +5<cr>]]
 
 -- ====== VARIOUS KEYMAPPINGS I'M TOO FUCKING LAZY TO DO PROPERLY ======
+-- Temporary vim-pencil bindings
+vim.cmd [[nmap <leader>uP :TogglePencil<cr> :SoftPencil <cr><cr>]]
+
 -- Tex comp & show
 vim.cmd [[nmap <leader>jl :w<cr> :!make <cr><cr>]]
 vim.cmd [[nmap <leader>jo :!zathura %:r.pdf &<cr><cr>]]
