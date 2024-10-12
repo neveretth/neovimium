@@ -54,6 +54,7 @@ require("catppuccin").setup {
   },
 }
 
+-- ================== MARKS ==================
 require'marks'.setup {
   -- whether to map keybinds or not. default true
   default_mappings = true,
@@ -91,14 +92,21 @@ require'marks'.setup {
   mappings = {}
 }
 
--- Harpoon setup
+-- ================== HARPOON ==================
+--
+-- required setup
 local harpoon = require("harpoon")
 harpoon:setup()
 
+-- Add/remove
 vim.keymap.set("n", "<leader>ha", function() harpoon:list():add() end)
 vim.keymap.set("n", "<leader>hd", function() harpoon:list():remove() end)
-vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
+-- show harpoon files
+vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+vim.keymap.set("n", "<leader>hp", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+
+-- choose mark with number
 vim.keymap.set("n", "<C-1>", function() harpoon:list():select(1) end)
 vim.keymap.set("n", "<C-2>", function() harpoon:list():select(2) end)
 vim.keymap.set("n", "<C-3>", function() harpoon:list():select(3) end)
@@ -109,7 +117,7 @@ vim.keymap.set("n", "<C-7>", function() harpoon:list():select(7) end)
 vim.keymap.set("n", "<C-8>", function() harpoon:list():select(8) end)
 vim.keymap.set("n", "<C-9>", function() harpoon:list():select(9) end)
 
--- Toggle previous & next buffers stored within Harpoon list
+-- toggle previous and next buffers stored within harpoon list
 vim.keymap.set("n", "<C-o>", function() harpoon:list():prev() end)
 vim.keymap.set("n", "<C-p>", function() harpoon:list():next() end)
 
