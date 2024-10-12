@@ -91,6 +91,28 @@ require'marks'.setup {
   mappings = {}
 }
 
+-- Harpoon setup
+local harpoon = require("harpoon")
+harpoon:setup()
+
+vim.keymap.set("n", "<leader>ha", function() harpoon:list():add() end)
+vim.keymap.set("n", "<leader>hd", function() harpoon:list():remove() end)
+vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+
+vim.keymap.set("n", "<C-1>", function() harpoon:list():select(1) end)
+vim.keymap.set("n", "<C-2>", function() harpoon:list():select(2) end)
+vim.keymap.set("n", "<C-3>", function() harpoon:list():select(3) end)
+vim.keymap.set("n", "<C-4>", function() harpoon:list():select(4) end)
+vim.keymap.set("n", "<C-5>", function() harpoon:list():select(5) end)
+vim.keymap.set("n", "<C-6>", function() harpoon:list():select(6) end)
+vim.keymap.set("n", "<C-7>", function() harpoon:list():select(7) end)
+vim.keymap.set("n", "<C-8>", function() harpoon:list():select(8) end)
+vim.keymap.set("n", "<C-9>", function() harpoon:list():select(9) end)
+
+-- Toggle previous & next buffers stored within Harpoon list
+vim.keymap.set("n", "<C-o>", function() harpoon:list():prev() end)
+vim.keymap.set("n", "<C-p>", function() harpoon:list():next() end)
+
 -- ====== VARIOUS SETTINGS I'M TOO FUCKING LAZY TO DO PROPERLY ======
 vim.cmd [[colorscheme catppuccin-mocha]]
 vim.cmd [[set wrap]]

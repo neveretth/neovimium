@@ -1,4 +1,5 @@
 return {
+  { "ThePrimeagen/harpoon", branch = "harpoon2", dependencies = { "nvim-lua/plenary.nvim" } },
   { dir = "~/.config/nvim/custom/fileheader.vim",     lazy = false },
   { "https://github.com/chrisbra/unicode.vim",        lazy = false },
   { "https://github.com/preservim/vim-pencil",        lazy = false },

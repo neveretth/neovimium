@@ -120,18 +120,18 @@ maps.n["]t"] = { function() vim.cmd.tabnext() end, desc = "Next tab" }
 maps.n["[t"] = { function() vim.cmd.tabprevious() end, desc = "Previous tab" }
 
 -- Alpha
-if is_available "alpha-nvim" then
-  maps.n["<leader>h"] = {
-    function()
-      local wins = vim.api.nvim_tabpage_list_wins(0)
-      if #wins > 1 and vim.api.nvim_get_option_value("filetype", { win = wins[1] }) == "neo-tree" then
-        vim.fn.win_gotoid(wins[2]) -- go to non-neo-tree window to toggle alpha
-      end
-      require("alpha").start(false, require("alpha").default_config)
-    end,
-    desc = "Home Screen",
-  }
-end
+-- if is_available "alpha-nvim" then
+--   maps.n["<leader>h"] = {
+--     function()
+--       local wins = vim.api.nvim_tabpage_list_wins(0)
+--       if #wins > 1 and vim.api.nvim_get_option_value("filetype", { win = wins[1] }) == "neo-tree" then
+--         vim.fn.win_gotoid(wins[2]) -- go to non-neo-tree window to toggle alpha
+--       end
+--       require("alpha").start(false, require("alpha").default_config)
+--     end,
+--     desc = "Home Screen",
+--   }
+-- end
 
 -- Comment
 if is_available "Comment.nvim" then
