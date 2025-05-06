@@ -1,5 +1,17 @@
 return {
-  { "ThePrimeagen/harpoon", branch = "harpoon2", dependencies = { "nvim-lua/plenary.nvim" } },
+  {
+    "folke/zen-mode.nvim",
+    opts = { window = { backdrop = 0.00, width = 120, height = 0.98 },
+    },
+    plugins = {
+      kitty = {
+        enabled = true,
+        font = "+2",
+      },
+    },
+    lazy = false
+  },
+  { "ThePrimeagen/harpoon",                           branch = "harpoon2",                                dependencies = { "nvim-lua/plenary.nvim" } },
   { dir = "~/.config/nvim/custom/fileheader.vim",     lazy = false },
   { "https://github.com/chrisbra/unicode.vim",        lazy = false },
   { "https://github.com/preservim/vim-pencil",        lazy = false },
