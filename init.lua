@@ -87,28 +87,31 @@ require'marks'.setup {
 local harpoon = require("harpoon")
 harpoon:setup()
 
--- Add/remove
-vim.keymap.set("n", "<leader>ha", function() harpoon:list():add() end)
-vim.keymap.set("n", "<leader>hd", function() harpoon:list():remove() end)
+-- Basic navigation 
+-- NOTE: This is kind of insane...
+vim.keymap.set("n", "<leader>h1", function() harpoon:list():replace_at(1) end)
+vim.keymap.set("n", "<leader>h2", function() harpoon:list():replace_at(2) end)
+vim.keymap.set("n", "<leader>h3", function() harpoon:list():replace_at(3) end)
+vim.keymap.set("n", "<leader>h4", function() harpoon:list():replace_at(4) end)
+vim.keymap.set("n", "<leader>h5", function() harpoon:list():replace_at(5) end)
+vim.keymap.set("n", "<leader>h6", function() harpoon:list():replace_at(6) end)
+vim.keymap.set("n", "<leader>h7", function() harpoon:list():replace_at(7) end)
+vim.keymap.set("n", "<leader>h8", function() harpoon:list():replace_at(8) end)
+vim.keymap.set("n", "<leader>h9", function() harpoon:list():replace_at(9) end)
 
--- show harpoon files
+vim.keymap.set("n", "<leader>1", function() harpoon:list():select(1) end)
+vim.keymap.set("n", "<leader>2", function() harpoon:list():select(2) end)
+vim.keymap.set("n", "<leader>3", function() harpoon:list():select(3) end)
+vim.keymap.set("n", "<leader>4", function() harpoon:list():select(4) end)
+vim.keymap.set("n", "<leader>5", function() harpoon:list():select(5) end)
+vim.keymap.set("n", "<leader>6", function() harpoon:list():select(6) end)
+vim.keymap.set("n", "<leader>7", function() harpoon:list():select(7) end)
+vim.keymap.set("n", "<leader>8", function() harpoon:list():select(8) end)
+vim.keymap.set("n", "<leader>9", function() harpoon:list():select(9) end)
+
+-- Show harpoon files
 vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 vim.keymap.set("n", "<leader>hp", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
-
--- choose mark with number
-vim.keymap.set("n", "<C-1>", function() harpoon:list():select(1) end)
-vim.keymap.set("n", "<C-2>", function() harpoon:list():select(2) end)
-vim.keymap.set("n", "<C-3>", function() harpoon:list():select(3) end)
-vim.keymap.set("n", "<C-4>", function() harpoon:list():select(4) end)
-vim.keymap.set("n", "<C-5>", function() harpoon:list():select(5) end)
-vim.keymap.set("n", "<C-6>", function() harpoon:list():select(6) end)
-vim.keymap.set("n", "<C-7>", function() harpoon:list():select(7) end)
-vim.keymap.set("n", "<C-8>", function() harpoon:list():select(8) end)
-vim.keymap.set("n", "<C-9>", function() harpoon:list():select(9) end)
-
--- toggle previous and next buffers stored within harpoon list
-vim.keymap.set("n", "<C-o>", function() harpoon:list():prev() end)
-vim.keymap.set("n", "<C-p>", function() harpoon:list():next() end)
 
 -- ====== VARIOUS SETTINGS I'M TOO FUCKING LAZY TO DO PROPERLY ======
 vim.cmd [[colorscheme catppuccin-mocha]]
@@ -127,15 +130,6 @@ vim.cmd [[nmap <leader>jl :w<cr> :!make <cr><cr>]]
 vim.cmd [[nmap <leader>jo :!zathura %:r.pdf &<cr><cr>]]
 
 vim.cmd [[inoremap <C-k><C-k> <Cmd>lua require'better-digraphs'.digraphs("insert")<CR>]]
-vim.cmd [[nnoremap r<C-k><C-k> <Cmd>lua require'better-digraphs'.digraphs("normal")<CR>]]
-vim.cmd [[vnoremap r<C-k><C-k> <ESC><Cmd>lua require'better-digraphs'.digraphs("visual")<CR>]]
-
-vim.cmd [[nmap <Leader>mf _i==> <ESC> A <==<ESC>]]
-vim.cmd [[nmap <Leader>mc :AddFileHeader<cr>]]
-
--- ====== ACTUALLY KIND OF COOL MACROS ======
--- This is a hell of a macro, I really should make it better, but I almost respect how stupid it is.
-vim.cmd [[nmap <Leader>ms O<ESC>cc====== @@@ ======<ESC> k <SPACE>/_f@ce]]
 
 -- Eviline config for lualine
 -- Author: shadmansaleh

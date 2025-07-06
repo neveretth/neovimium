@@ -11,6 +11,7 @@ return {
     },
     lazy = false
   },
+  { "https://github.com/tidalcycles/vim-tidal",        lazy = false },
   { "ThePrimeagen/harpoon",                           branch = "harpoon2",                                dependencies = { "nvim-lua/plenary.nvim" } },
   { "https://github.com/chrisbra/unicode.vim",        lazy = false },
   { "https://github.com/chentoast/marks.nvim",        lazy = false },
