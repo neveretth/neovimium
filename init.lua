@@ -124,6 +124,7 @@ vim.cmd [[nnoremap <C-up> :resize +5<cr>]]
 
 -- ====== VARIOUS KEYMAPPINGS I'M TOO FUCKING LAZY TO DO PROPERLY ======
 vim.cmd [[nmap <leader>uW :set colorcolumn=80<cr>]]
+vim.cmd [[nmap <leader>uz :ZenMode <cr>]]
 
 -- Tex comp & show
 vim.cmd [[nmap <leader>jl :w<cr> :!make <cr><cr>]]
