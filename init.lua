@@ -127,7 +127,7 @@ vim.cmd [[nmap <leader>uW :set colorcolumn=80<cr>]]
 vim.cmd [[nmap <leader>uz :ZenMode <cr>]]
 
 -- Tex comp & show
-vim.cmd [[nmap <leader>jl :w<cr> :!make <cr><cr>]]
+vim.cmd [[nmap <leader>jl :w<cr> :!latexmk -lualatex main <cr><cr>]]
 vim.cmd [[nmap <leader>jo :!zathura %:r.pdf &<cr><cr>]]
 
 vim.cmd [[inoremap <C-k><C-k> <Cmd>lua require'better-digraphs'.digraphs("insert")<CR>]]
