@@ -116,6 +116,7 @@ vim.keymap.set("n", "<leader>hp", function() harpoon.ui:toggle_quick_menu(harpoo
 -- ====== VARIOUS SETTINGS I'M TOO FUCKING LAZY TO DO PROPERLY ======
 vim.cmd [[colorscheme catppuccin-mocha]]
 vim.cmd [[set wrap]]
+
 -- resize vs
 vim.cmd [[nnoremap <C-right> :vertical resize -5<cr>]]
 vim.cmd [[nnoremap <C-left> :vertical resize +5<cr>]]
@@ -352,3 +353,8 @@ ins_right {
 }
 
 lualine.setup(config)
+
+
+-- Text-central file formatting macro thingy.
+-- Largely for LaTeX / helpfile
+vim.cmd [[nmap <leader>uf :set nofoldenable autoindent& smartindent& cindent& indentexpr& tw=80<cr>]]
