@@ -113,25 +113,6 @@ vim.keymap.set("n", "<leader>9", function() harpoon:list():select(9) end)
 vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 vim.keymap.set("n", "<leader>hp", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
--- ====== VARIOUS SETTINGS I'M TOO FUCKING LAZY TO DO PROPERLY ======
-vim.cmd [[colorscheme catppuccin-mocha]]
-vim.cmd [[set wrap]]
-
--- resize vs
-vim.cmd [[nnoremap <C-right> :vertical resize -5<cr>]]
-vim.cmd [[nnoremap <C-left> :vertical resize +5<cr>]]
-vim.cmd [[nnoremap <C-down> :resize -5<cr>]]
-vim.cmd [[nnoremap <C-up> :resize +5<cr>]]
-
--- ====== VARIOUS KEYMAPPINGS I'M TOO FUCKING LAZY TO DO PROPERLY ======
-vim.cmd [[nmap <leader>uW :set colorcolumn=80<cr>]]
-vim.cmd [[nmap <leader>uz :ZenMode <cr>]]
-
--- Tex comp & show
-vim.cmd [[nmap <leader>jl :w<cr> :!latexmk -lualatex main <cr><cr>]]
-vim.cmd [[nmap <leader>jo :!zathura %:r.pdf &<cr><cr>]]
-
-vim.cmd [[inoremap <C-k><C-k> <Cmd>lua require'better-digraphs'.digraphs("insert")<CR>]]
 
 -- Eviline config for lualine
 -- Author: shadmansaleh
@@ -355,6 +336,27 @@ ins_right {
 lualine.setup(config)
 
 
+-- ====== VARIOUS SETTINGS ======
+vim.cmd [[colorscheme catppuccin-mocha]]
+vim.cmd [[set wrap]]
+
+-- resize vs (this is really goofy)
+vim.cmd [[nnoremap <C-right> :vertical resize -5<cr>]]
+vim.cmd [[nnoremap <C-left> :vertical resize +5<cr>]]
+vim.cmd [[nnoremap <C-down> :resize -5<cr>]]
+vim.cmd [[nnoremap <C-up> :resize +5<cr>]]
+
+-- ====== VARIOUS KEYMAPPINGS I'M TOO FUCKING LAZY TO DO PROPERLY ======
+vim.cmd [[nmap <leader>uW :set colorcolumn=80<cr>]]
+vim.cmd [[nmap <leader>uz :ZenMode <cr>]]
+
+-- TeX comp & show
+vim.cmd [[nmap <leader>jl :w<cr> :!latexmk -lualatex -output-directory=tmp main <cr><cr>]]
+vim.cmd [[nmap <leader>jo :!zathura tmp/main.pdf &<cr><cr>]]
+
+vim.cmd [[inoremap <C-k><C-k> <Cmd>lua require'better-digraphs'.digraphs("insert")<CR>]]
+
 -- Text-central file formatting macro thingy.
 -- Largely for LaTeX / helpfile
 vim.cmd [[nmap <leader>uf :set nofoldenable autoindent& smartindent& cindent& indentexpr& tw=80<cr>]]
+
