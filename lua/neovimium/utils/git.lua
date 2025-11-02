@@ -1,8 +1,8 @@
 --- ### Git LUA API
 --
--- This module can be loaded with `local git = require "astronvim.utils.git"`
+-- This module can be loaded with `local git = require "neovimium.utils.git"`
 --
--- @module astronvim.utils.git
+-- @module neovimium.utils.git
 -- @copyright 2022
 -- @license GNU General Public License v3.0
 
@@ -14,7 +14,7 @@ local function trim_or_nil(str) return type(str) == "string" and vim.trim(str) o
 ---@param args string the git arguments
 ---@return string|nil # The result of the command or nil if unsuccessful
 function git.cmd(args, ...)
-  return require("astronvim.utils").cmd("git -C " .. astronvim.install.home .. " " .. args, ...)
+  return require("neovimium.utils").cmd("git -C " .. neovimium.install.home .. " " .. args, ...)
 end
 
 --- Check if the AstroNvim is able to reach the `git` command
@@ -143,7 +143,7 @@ end
 ---@param str string the remote to parse to a full git url
 ---@return string # The full git url for the given remote string
 function git.parse_remote_url(str)
-  return vim.fn.match(str, astronvim.url_matcher) == -1
+  return vim.fn.match(str, neovimium.url_matcher) == -1
       and git.url .. str .. (vim.fn.match(str, "/") == -1 and "/AstroNvim.git" or ".git")
     or str
 end
@@ -160,7 +160,7 @@ function git.breaking_changes(commits) return vim.tbl_filter(git.is_breaking, co
 
 --- Generate a table of commit messages for neovim's echo API with highlighting
 ---@param commits string[] an array like table of commit messages
----@return string[][] # An array like table of echo messages to provide to nvim_echo or astronvim.echo
+---@return string[][] # An array like table of echo messages to provide to nvim_echo or neovimium.echo
 function git.pretty_changelog(commits)
   local changelog = {}
   for _, commit in ipairs(commits) do

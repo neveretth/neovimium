@@ -1,6 +1,6 @@
 return function(_, _)
-  local lsp = require "astronvim.utils.lsp"
-  local get_icon = require("astronvim.utils").get_icon
+  local lsp = require "neovimium.utils.lsp"
+  local get_icon = require("neovimium.utils").get_icon
   local signs = {
     { name = "DiagnosticSignError", text = get_icon "DiagnosticError", texthl = "DiagnosticSignError" },
     { name = "DiagnosticSignWarn", text = get_icon "DiagnosticWarn", texthl = "DiagnosticSignWarn" },
@@ -24,11 +24,11 @@ return function(_, _)
       vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded", silent = true })
   end
   local setup_servers = function()
-    vim.tbl_map(require("astronvim.utils.lsp").setup, astronvim.user_opts "lsp.servers")
+    vim.tbl_map(require("neovimium.utils.lsp").setup, neovimium.user_opts "lsp.servers")
     vim.api.nvim_exec_autocmds("FileType", {})
-    require("astronvim.utils").event "LspSetup"
+    require("neovimium.utils").event "LspSetup"
   end
-  if require("astronvim.utils").is_available "mason-lspconfig.nvim" then
+  if require("neovimium.utils").is_available "mason-lspconfig.nvim" then
     vim.api.nvim_create_autocmd("User", { pattern = "AstroMasonLspSetup", once = true, callback = setup_servers })
   else
     setup_servers()

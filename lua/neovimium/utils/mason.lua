@@ -2,16 +2,16 @@
 --
 -- Mason related utility functions to use within AstroNvim and user configurations.
 --
--- This module can be loaded with `local mason_utils = require("astronvim.utils.mason")`
+-- This module can be loaded with `local mason_utils = require("neovimium.utils.mason")`
 --
--- @module astronvim.utils.mason
--- @see astronvim.utils
+-- @module neovimium.utils.mason
+-- @see neovimium.utils
 -- @copyright 2022
 -- @license GNU General Public License v3.0
 
 local M = {}
 
-local utils = require "astronvim.utils"
+local utils = require "neovimium.utils"
 local notify = utils.notify
 local astroevent = utils.event
 

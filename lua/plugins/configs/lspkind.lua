@@ -1,4 +1,4 @@
 return function(_, opts)
-  astronvim.lspkind = opts
+  neovimium.lspkind = opts
   require("lspkind").init(opts)
 end

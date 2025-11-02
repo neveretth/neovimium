@@ -1,8 +1,8 @@
 return function(_, opts)
   local heirline = require "heirline"
-  local status = require "astronvim.utils.status"
+  local status = require "neovimium.utils.status"
   local C = status.env.fallback_colors
-  local get_hlgroup = require("astronvim.utils").get_hlgroup
+  local get_hlgroup = require("neovimium.utils").get_hlgroup
 
   local function setup_colors()
     local Normal = get_hlgroup("Normal", { fg = C.fg, bg = C.bg })
@@ -35,7 +35,7 @@ return function(_, opts)
     local HeirlineTerminal = get_hlgroup("HeirlineTerminal", { bg = nil }).bg
       or status.hl.lualine_mode("insert", HeirlineInsert)
 
-    local colors = astronvim.user_opts("heirline.colors", {
+    local colors = neovimium.user_opts("heirline.colors", {
       close_fg = Error.fg,
       fg = StatusLine.fg,
       bg = StatusLine.bg,

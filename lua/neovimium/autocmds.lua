@@ -3,7 +3,7 @@ local autocmd = vim.api.nvim_create_autocmd
 local cmd = vim.api.nvim_create_user_command
 local namespace = vim.api.nvim_create_namespace
 
-local utils = require "astronvim.utils"
+local utils = require "neovimium.utils"
 local is_available = utils.is_available
 local astroevent = utils.event
 
@@ -25,7 +25,7 @@ autocmd({ "BufAdd", "BufEnter" }, {
       table.insert(bufs, args.buf)
       vim.t.bufs = bufs
     end
-    vim.t.bufs = vim.tbl_filter(require("astronvim.utils.buffer").is_valid, vim.t.bufs)
+    vim.t.bufs = vim.tbl_filter(require("neovimium.utils.buffer").is_valid, vim.t.bufs)
     astroevent "BufsUpdated"
   end,
 })
@@ -45,7 +45,7 @@ autocmd("BufDelete", {
         end
       end
     end
-    vim.t.bufs = vim.tbl_filter(require("astronvim.utils.buffer").is_valid, vim.t.bufs)
+    vim.t.bufs = vim.tbl_filter(require("neovimium.utils.buffer").is_valid, vim.t.bufs)
     astroevent "BufsUpdated"
     vim.cmd.redrawtabline()
   end,
@@ -200,11 +200,11 @@ end
 
 autocmd({ "VimEnter", "ColorScheme" }, {
   desc = "Load custom highlights from user configuration",
-  group = augroup("astronvim_highlights", { clear = true }),
+  group = augroup("neovimium_highlights", { clear = true }),
   callback = function()
     if vim.g.colors_name then
       for _, module in ipairs { "init", vim.g.colors_name } do
-        for group, spec in pairs(astronvim.user_opts("highlights." .. module)) do
+        for group, spec in pairs(neovimium.user_opts("highlights." .. module)) do
           vim.api.nvim_set_hl(0, group, spec)
         end
       end
@@ -225,14 +225,14 @@ autocmd({ "BufReadPost", "BufNewFile" }, {
 
 cmd(
   "AstroChangelog",
-  function() require("astronvim.utils.updater").changelog() end,
+  function() require("neovimium.utils.updater").changelog() end,
   { desc = "Check AstroNvim Changelog" }
 )
 cmd(
   "AstroUpdatePackages",
-  function() require("astronvim.utils.updater").update_packages() end,
+  function() require("neovimium.utils.updater").update_packages() end,
   { desc = "Update Plugins and Mason" }
 )
-cmd("AstroRollback", function() require("astronvim.utils.updater").rollback() end, { desc = "Rollback AstroNvim" })
-cmd("AstroUpdate", function() require("astronvim.utils.updater").update() end, { desc = "Update AstroNvim" })
-cmd("AstroVersion", function() require("astronvim.utils.updater").version() end, { desc = "Check AstroNvim Version" })
+cmd("AstroRollback", function() require("neovimium.utils.updater").rollback() end, { desc = "Rollback AstroNvim" })
+cmd("AstroUpdate", function() require("neovimium.utils.updater").update() end, { desc = "Update AstroNvim" })
+cmd("AstroVersion", function() require("neovimium.utils.updater").version() end, { desc = "Check AstroNvim Version" })

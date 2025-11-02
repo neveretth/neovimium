@@ -14,29 +14,29 @@ if not vim.loop.fs_stat(lazypath) then
       vim.cmd.bw()
       vim.opt.cmdheight = oldcmdheight
       vim.tbl_map(function(module) pcall(require, module) end, { "nvim-treesitter", "mason" })
-      require("astronvim.utils").notify "Mason is installing packages if configured, check status with :Mason"
+      require("neovimium.utils").notify "Mason is installing packages if configured, check status with :Mason"
     end,
   })
 end
 vim.opt.rtp:prepend(lazypath)
 
-local user_plugins = astronvim.user_opts "plugins"
-for _, config_dir in ipairs(astronvim.supported_configs) do
+local user_plugins = neovimium.user_opts "plugins"
+for _, config_dir in ipairs(neovimium.supported_configs) do
   if vim.fn.isdirectory(config_dir .. "/lua/user/plugins") == 1 then user_plugins = { import = "user.plugins" } end
 end
 
-local spec = astronvim.updater.options.pin_plugins and { { import = astronvim.updater.snapshot.module } } or {}
+local spec = neovimium.updater.options.pin_plugins and { { import = neovimium.updater.snapshot.module } } or {}
 vim.list_extend(spec, { { import = "plugins" }, user_plugins })
 
-local colorscheme = astronvim.default_colorscheme and { astronvim.default_colorscheme } or nil
+local colorscheme = neovimium.default_colorscheme and { neovimium.default_colorscheme } or nil
 
-require("lazy").setup(astronvim.user_opts("lazy", {
+require("lazy").setup(neovimium.user_opts("lazy", {
   spec = spec,
   defaults = { lazy = true },
   install = { colorscheme = colorscheme },
   performance = {
     rtp = {
-      paths = astronvim.supported_configs,
+      paths = neovimium.supported_configs,
       disabled_plugins = { "tohtml", "gzip", "zipPlugin", "netrwPlugin", "tarPlugin" },
     },
   },

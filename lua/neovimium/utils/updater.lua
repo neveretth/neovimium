@@ -2,18 +2,18 @@
 --
 -- AstroNvim Updater utilities to use within AstroNvim and user configurations.
 --
--- This module can also loaded with `local updater = require("astronvim.utils.updater")`
+-- This module can also loaded with `local updater = require("neovimium.utils.updater")`
 --
--- @module astronvim.utils.updater
--- @see astronvim.utils
+-- @module neovimium.utils.updater
+-- @see neovimium.utils
 -- @copyright 2022
 -- @license GNU General Public License v3.0
 
-local git = require "astronvim.utils.git"
+local git = require "neovimium.utils.git"
 
 local M = {}
 
-local utils = require "astronvim.utils"
+local utils = require "neovimium.utils"
 local notify = utils.notify
 
 local function echo(messages)
@@ -35,7 +35,7 @@ end
 ---@return table # The plugin specification table of the snapshot
 function M.generate_snapshot(write)
   local file
-  local prev_snapshot = require(astronvim.updater.snapshot.module)
+  local prev_snapshot = require(neovimium.updater.snapshot.module)
   for _, plugin in ipairs(prev_snapshot) do
     prev_snapshot[plugin[1]] = plugin
   end
@@ -45,7 +45,7 @@ function M.generate_snapshot(write)
     if commit then return vim.trim(commit) end
   end
   if write == true then
-    file = assert(io.open(astronvim.updater.snapshot.path, "w"))
+    file = assert(io.open(neovimium.updater.snapshot.path, "w"))
     file:write "return {\n"
   end
   local snapshot = vim.tbl_map(function(plugin)
@@ -76,8 +76,8 @@ end
 ---@param quiet? boolean Whether to quietly execute or send a notification
 ---@return string # The current AstroNvim version string
 function M.version(quiet)
-  local version = astronvim.install.version or git.current_version(false) or "unknown"
-  if astronvim.updater.options.channel ~= "stable" then version = ("nightly (%s)"):format(version) end
+  local version = neovimium.install.version or git.current_version(false) or "unknown"
+  if neovimium.updater.options.channel ~= "stable" then version = ("nightly (%s)"):format(version) end
   if version and not quiet then notify("Version: " .. version) end
   return version
 end
@@ -110,7 +110,7 @@ local cancelled_message = { { "Update cancelled", "WarningMsg" } }
 --- Sync Packer and then update Mason
 function M.update_packages()
   require("lazy").sync { wait = true }
-  require("astronvim.utils.mason").update_all()
+  require("neovimium.utils.mason").update_all()
 end
 
 --- Create a table of options for the currently installed AstroNvim version
@@ -123,7 +123,7 @@ function M.create_rollback(write)
   snapshot.remotes = { [snapshot.remote] = git.remote_url(snapshot.remote) }
 
   if write == true then
-    local file = assert(io.open(astronvim.updater.rollback_file, "w"))
+    local file = assert(io.open(neovimium.updater.rollback_file, "w"))
     file:write("return " .. vim.inspect(snapshot, { newline = " ", indent = "" }))
     file:close()
   end
@@ -133,7 +133,7 @@ end
 
 --- AstroNvim's rollback to saved previous version function
 function M.rollback()
-  local rollback_avail, rollback_opts = pcall(dofile, astronvim.updater.rollback_file)
+  local rollback_avail, rollback_opts = pcall(dofile, neovimium.updater.rollback_file)
   if not rollback_avail then
     notify("No rollback file available", vim.log.levels.ERROR)
     return
@@ -144,8 +144,8 @@ end
 --- AstroNvim's updater function
 ---@param opts? table the settings to use for the update
 function M.update(opts)
-  if not opts then opts = astronvim.updater.options end
-  opts = require("astronvim.utils").extend_tbl({ remote = "origin", show_changelog = true, auto_quit = false }, opts)
+  if not opts then opts = neovimium.updater.options end
+  opts = require("neovimium.utils").extend_tbl({ remote = "origin", show_changelog = true, auto_quit = false }, opts)
   -- if the git command is not available, then throw an error
   if not git.available() then
     notify(

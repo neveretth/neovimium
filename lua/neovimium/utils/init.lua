@@ -2,9 +2,9 @@
 --
 -- Various utility functions to use within AstroNvim and user configurations.
 --
--- This module can be loaded with `local utils = require "astronvim.utils"`
+-- This module can be loaded with `local utils = require "neovimium.utils"`
 --
--- @module astronvim.utils
+-- @module neovimium.utils
 -- @copyright 2022
 -- @license GNU General Public License v3.0
 
@@ -47,8 +47,8 @@ end
 function M.get_icon(kind)
   local icon_pack = vim.g.icons_enabled and "icons" or "text_icons"
   if not M[icon_pack] then
-    M.icons = astronvim.user_opts("icons", require "astronvim.icons.nerd_font")
-    M.text_icons = astronvim.user_opts("text_icons", require "astronvim.icons.text")
+    M.icons = neovimium.user_opts("icons", require "neovimium.icons.nerd_font")
+    M.text_icons = neovimium.user_opts("text_icons", require "neovimium.icons.text")
   end
   return M[icon_pack] and M[icon_pack][kind] or ""
 end
@@ -109,7 +109,7 @@ end
 --- Toggle a user terminal if it exists, if not then create a new one and save it
 ---@param opts string|table A terminal command string or a table of options for Terminal:new() (Check toggleterm.nvim documentation for table format)
 function M.toggle_term_cmd(opts)
-  local terms = astronvim.user_terminals
+  local terms = neovimium.user_terminals
   -- if a command string is provided, create a basic table for Terminal:new() options
   if type(opts) == "string" then opts = { cmd = opts, hidden = true } end
   local num = vim.v.count > 0 and vim.v.count or 1

@@ -2,9 +2,9 @@
 --
 -- Buffer management related utility functions
 --
--- This module can be loaded with `local buffer_utils = require "astronvim.utils.buffer"`
+-- This module can be loaded with `local buffer_utils = require "neovimium.utils.buffer"`
 --
--- @module astronvim.utils.buffer
+-- @module neovimium.utils.buffer
 -- @copyright 2022
 -- @license GNU General Public License v3.0
 
@@ -41,7 +41,7 @@ function M.move(n)
     end
   end
   vim.t.bufs = bufs -- set buffers
-  require("astronvim.utils").event "BufsUpdated"
+  require("neovimium.utils").event "BufsUpdated"
   vim.cmd.redrawtabline() -- redraw tabline
 end
 
@@ -66,7 +66,7 @@ function M.nav_to(tabnr) vim.cmd.b(vim.t.bufs[tabnr]) end
 ---@param force? boolean Whether or not to foce close the buffers or confirm changes (default: false)
 function M.close(bufnr, force)
   if force == nil then force = false end
-  if require("astronvim.utils").is_available "bufdelete.nvim" then
+  if require("neovimium.utils").is_available "bufdelete.nvim" then
     require("bufdelete").bufdelete(bufnr, force)
   else
     vim.cmd((force and "bd!" or "confirm bd") .. bufnr)
@@ -106,7 +106,7 @@ function M.close_right(force)
 end
 
 --- Sort a the buffers in the current tab based on some comparator
----@param compare_func string|function a string of a comparator defined in require("astronvim.utils.buffer").comparator or a custom comparator function
+---@param compare_func string|function a string of a comparator defined in require("neovimium.utils.buffer").comparator or a custom comparator function
 ---@return boolean # Whether or not the buffers were sorted
 function M.sort(compare_func)
   if type(compare_func) == "string" then compare_func = M.comparator[compare_func] end
@@ -114,7 +114,7 @@ function M.sort(compare_func)
     local bufs = vim.t.bufs
     table.sort(bufs, compare_func)
     vim.t.bufs = bufs
-    require("astronvim.utils").event "BufsUpdated"
+    require("neovimium.utils").event "BufsUpdated"
     vim.cmd.redrawtabline()
     return true
   end
@@ -125,7 +125,7 @@ end
 function M.close_tab()
   if #vim.api.nvim_list_tabpages() > 1 then
     vim.t.bufs = nil
-    require("astronvim.utils").event "BufsUpdated"
+    require("neovimium.utils").event "BufsUpdated"
     vim.cmd.tabclose()
   end
 end
@@ -136,7 +136,7 @@ M.comparator = {}
 local fnamemodify = vim.fn.fnamemodify
 local function bufinfo(bufnr) return vim.fn.getbufinfo(bufnr)[1] end
 local function unique_path(bufnr)
-  return require("astronvim.utils.status").provider.unique_path() { bufnr = bufnr }
+  return require("neovimium.utils.status").provider.unique_path() { bufnr = bufnr }
     .. fnamemodify(bufinfo(bufnr).name, ":t")
 end
 

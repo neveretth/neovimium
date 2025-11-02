@@ -4,8 +4,8 @@ return {
     "folke/neodev.nvim",
     opts = {
       override = function(root_dir, library)
-        for _, astronvim_config in ipairs(astronvim.supported_configs) do
-          if root_dir:match(astronvim_config) then
+        for _, neovimium_config in ipairs(neovimium.supported_configs) do
+          if root_dir:match(neovimium_config) then
             library.plugins = true
             break
           end
@@ -36,7 +36,7 @@ return {
       },
     },
     event = "User AstroFile",
-    opts = function() return { on_attach = require("astronvim.utils.lsp").on_attach } end,
+    opts = function() return { on_attach = require("neovimium.utils.lsp").on_attach } end,
   },
   {
     "stevearc/aerial.nvim",

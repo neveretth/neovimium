@@ -2,19 +2,19 @@
 --
 -- LSP related utility functions to use within AstroNvim and user configurations.
 --
--- This module can be loaded with `local lsp_utils = require("astronvim.utils.lsp")`
+-- This module can be loaded with `local lsp_utils = require("neovimium.utils.lsp")`
 --
--- @module astronvim.utils.lsp
--- @see astronvim.utils
+-- @module neovimium.utils.lsp
+-- @see neovimium.utils
 -- @copyright 2022
 -- @license GNU General Public License v3.0
 
 local M = {}
 local tbl_contains = vim.tbl_contains
 local tbl_isempty = vim.tbl_isempty
-local user_opts = astronvim.user_opts
+local user_opts = neovimium.user_opts
 
-local utils = require "astronvim.utils"
+local utils = require "neovimium.utils"
 local conditional_func = utils.conditional_func
 local is_available = utils.is_available
 
@@ -26,7 +26,7 @@ local setup_handlers = user_opts("lsp.setup_handlers", {
 M.diagnostics = { [0] = {}, {}, {}, {} }
 
 M.setup_diagnostics = function(signs)
-  local default_diagnostics = astronvim.user_opts("diagnostics", {
+  local default_diagnostics = neovimium.user_opts("diagnostics", {
     virtual_text = true,
     signs = { active = signs },
     update_in_insert = true,
@@ -85,7 +85,7 @@ M.setup = function(server)
   end
   local opts = M.config(server)
   local setup_handler = setup_handlers[server] or setup_handlers[1]
-  if not vim.tbl_contains(astronvim.lsp.skip_setup, server) and setup_handler then setup_handler(server, opts) end
+  if not vim.tbl_contains(neovimium.lsp.skip_setup, server) and setup_handler then setup_handler(server, opts) end
 end
 
 local function add_buffer_autocmd(augroup, bufnr, autocmds)
@@ -206,16 +206,16 @@ M.on_attach = function(client, bufnr)
           local autoformat_enabled = vim.b.autoformat_enabled
           if autoformat_enabled == nil then autoformat_enabled = vim.g.autoformat_enabled end
           if autoformat_enabled and ((not autoformat.filter) or autoformat.filter(bufnr)) then
-            vim.lsp.buf.format(require("astronvim.utils").extend_tbl(M.format_opts, { bufnr = bufnr }))
+            vim.lsp.buf.format(require("neovimium.utils").extend_tbl(M.format_opts, { bufnr = bufnr }))
           end
         end,
       })
       lsp_mappings.n["<leader>uf"] = {
-        function() require("astronvim.utils.ui").toggle_buffer_autoformat() end,
+        function() require("neovimium.utils.ui").toggle_buffer_autoformat() end,
         desc = "Toggle autoformatting (buffer)",
       }
       lsp_mappings.n["<leader>uF"] = {
-        function() require("astronvim.utils.ui").toggle_autoformat() end,
+        function() require("neovimium.utils.ui").toggle_autoformat() end,
         desc = "Toggle autoformatting (global)",
       }
     end
@@ -288,7 +288,7 @@ M.on_attach = function(client, bufnr)
 
   if capabilities.semanticTokensProvider and vim.lsp.semantic_tokens then
     lsp_mappings.n["<leader>uY"] = {
-      function() require("astronvim.utils.ui").toggle_buffer_semantic_tokens(bufnr) end,
+      function() require("neovimium.utils.ui").toggle_buffer_semantic_tokens(bufnr) end,
       desc = "Toggle LSP semantic highlight (buffer)",
     }
   end
@@ -344,7 +344,7 @@ M.flags = user_opts "lsp.flags"
 ---@return table # The table of LSP options used when setting up the given language server
 function M.config(server_name)
   local server = require("lspconfig")[server_name]
-  local lsp_opts = require("astronvim.utils").extend_tbl(
+  local lsp_opts = require("neovimium.utils").extend_tbl(
     { capabilities = server.capabilities, flags = server.flags },
     { capabilities = M.capabilities, flags = M.flags }
   )
@@ -362,9 +362,9 @@ function M.config(server_name)
     pcall(require, "neodev")
     lsp_opts.before_init = function(param, config)
       if vim.b.neodev_enabled then
-        for _, astronvim_config in ipairs(astronvim.supported_configs) do
-          if param.rootPath:match(astronvim_config) then
-            table.insert(config.settings.Lua.workspace.library, astronvim.install.home .. "/lua")
+        for _, neovimium_config in ipairs(neovimium.supported_configs) do
+          if param.rootPath:match(neovimium_config) then
+            table.insert(config.settings.Lua.workspace.library, neovimium.install.home .. "/lua")
             break
           end
         end

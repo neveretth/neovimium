@@ -1,6 +1,6 @@
-local utils = require "astronvim.utils"
+local utils = require "neovimium.utils"
 local is_available = utils.is_available
-local ui = require "astronvim.utils.ui"
+local ui = require "neovimium.utils.ui"
 
 local maps = { i = {}, n = {}, v = {}, t = {} }
 
@@ -46,59 +46,59 @@ maps.n["<leader>pv"] = { "<cmd>AstroVersion<cr>", desc = "AstroNvim Version" }
 maps.n["<leader>pl"] = { "<cmd>AstroChangelog<cr>", desc = "AstroNvim Changelog" }
 
 -- Manage Buffers
-maps.n["<leader>c"] = { function() require("astronvim.utils.buffer").close() end, desc = "Close buffer" }
-maps.n["<leader>C"] = { function() require("astronvim.utils.buffer").close(0, true) end, desc = "Force close buffer" }
+maps.n["<leader>c"] = { function() require("neovimium.utils.buffer").close() end, desc = "Close buffer" }
+maps.n["<leader>C"] = { function() require("neovimium.utils.buffer").close(0, true) end, desc = "Force close buffer" }
 maps.n["]b"] =
-  { function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end, desc = "Next buffer" }
+  { function() require("neovimium.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end, desc = "Next buffer" }
 maps.n["[b"] = {
-  function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
+  function() require("neovimium.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
   desc = "Previous buffer",
 }
 maps.n[">b"] = {
-  function() require("astronvim.utils.buffer").move(vim.v.count > 0 and vim.v.count or 1) end,
+  function() require("neovimium.utils.buffer").move(vim.v.count > 0 and vim.v.count or 1) end,
   desc = "Move buffer tab right",
 }
 maps.n["<b"] = {
-  function() require("astronvim.utils.buffer").move(-(vim.v.count > 0 and vim.v.count or 1)) end,
+  function() require("neovimium.utils.buffer").move(-(vim.v.count > 0 and vim.v.count or 1)) end,
   desc = "Move buffer tab left",
 }
 
 maps.n["<leader>b"] = sections.b
 maps.n["<leader>bc"] =
-  { function() require("astronvim.utils.buffer").close_all(true) end, desc = "Close all buffers except current" }
-maps.n["<leader>bC"] = { function() require("astronvim.utils.buffer").close_all() end, desc = "Close all buffers" }
+  { function() require("neovimium.utils.buffer").close_all(true) end, desc = "Close all buffers except current" }
+maps.n["<leader>bC"] = { function() require("neovimium.utils.buffer").close_all() end, desc = "Close all buffers" }
 maps.n["<leader>bb"] = {
   function()
-    require("astronvim.utils.status").heirline.buffer_picker(function(bufnr) vim.api.nvim_win_set_buf(0, bufnr) end)
+    require("neovimium.utils.status").heirline.buffer_picker(function(bufnr) vim.api.nvim_win_set_buf(0, bufnr) end)
   end,
   desc = "Select buffer from tabline",
 }
 maps.n["<leader>bd"] = {
   function()
-    require("astronvim.utils.status").heirline.buffer_picker(
-      function(bufnr) require("astronvim.utils.buffer").close(bufnr) end
+    require("neovimium.utils.status").heirline.buffer_picker(
+      function(bufnr) require("neovimium.utils.buffer").close(bufnr) end
     )
   end,
   desc = "Delete buffer from tabline",
 }
 maps.n["<leader>bl"] =
-  { function() require("astronvim.utils.buffer").close_left() end, desc = "Close all buffers to the left" }
+  { function() require("neovimium.utils.buffer").close_left() end, desc = "Close all buffers to the left" }
 maps.n["<leader>br"] =
-  { function() require("astronvim.utils.buffer").close_right() end, desc = "Close all buffers to the right" }
+  { function() require("neovimium.utils.buffer").close_right() end, desc = "Close all buffers to the right" }
 maps.n["<leader>bs"] = sections.bs
 maps.n["<leader>bse"] =
-  { function() require("astronvim.utils.buffer").sort "extension" end, desc = "Sort by extension (buffers)" }
+  { function() require("neovimium.utils.buffer").sort "extension" end, desc = "Sort by extension (buffers)" }
 maps.n["<leader>bsr"] =
-  { function() require("astronvim.utils.buffer").sort "unique_path" end, desc = "Sort by relative path (buffers)" }
+  { function() require("neovimium.utils.buffer").sort "unique_path" end, desc = "Sort by relative path (buffers)" }
 maps.n["<leader>bsp"] =
-  { function() require("astronvim.utils.buffer").sort "full_path" end, desc = "Sort by full path (buffers)" }
+  { function() require("neovimium.utils.buffer").sort "full_path" end, desc = "Sort by full path (buffers)" }
 maps.n["<leader>bsi"] =
-  { function() require("astronvim.utils.buffer").sort "bufnr" end, desc = "Sort by buffer number (buffers)" }
+  { function() require("neovimium.utils.buffer").sort "bufnr" end, desc = "Sort by buffer number (buffers)" }
 maps.n["<leader>bsm"] =
-  { function() require("astronvim.utils.buffer").sort "modified" end, desc = "Sort by modification (buffers)" }
+  { function() require("neovimium.utils.buffer").sort "modified" end, desc = "Sort by modification (buffers)" }
 maps.n["<leader>b\\"] = {
   function()
-    require("astronvim.utils.status").heirline.buffer_picker(function(bufnr)
+    require("neovimium.utils.status").heirline.buffer_picker(function(bufnr)
       vim.cmd.split()
       vim.api.nvim_win_set_buf(0, bufnr)
     end)
@@ -107,7 +107,7 @@ maps.n["<leader>b\\"] = {
 }
 maps.n["<leader>b|"] = {
   function()
-    require("astronvim.utils.status").heirline.buffer_picker(function(bufnr)
+    require("neovimium.utils.status").heirline.buffer_picker(function(bufnr)
       vim.cmd.vsplit()
       vim.api.nvim_win_set_buf(0, bufnr)
     end)
@@ -231,8 +231,8 @@ if is_available "telescope.nvim" then
     function()
       local cwd = vim.fn.stdpath "config" .. "/.."
       local search_dirs = {}
-      for _, dir in ipairs(astronvim.supported_configs) do -- search all supported config locations
-        if dir == astronvim.install.home then dir = dir .. "/lua/user" end -- don't search the astronvim core files
+      for _, dir in ipairs(neovimium.supported_configs) do -- search all supported config locations
+        if dir == neovimium.install.home then dir = dir .. "/lua/user" end -- don't search the neovimium core files
         if vim.fn.isdirectory(dir) == 1 then table.insert(search_dirs, dir) end -- add directory to search if exists
       end
       if vim.tbl_isempty(search_dirs) then -- if no config folders found, show warning
@@ -392,4 +392,4 @@ maps.n["<leader>uw"] = { ui.toggle_wrap, desc = "Toggle wrap" }
 maps.n["<leader>uy"] = { ui.toggle_syntax, desc = "Toggle syntax highlight" }
 maps.n["<leader>uh"] = { ui.toggle_foldcolumn, desc = "Toggle foldcolumn" }
 
-utils.set_mappings(astronvim.user_opts("mappings", maps))
+utils.set_mappings(neovimium.user_opts("mappings", maps))

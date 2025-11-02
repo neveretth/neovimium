@@ -4,7 +4,7 @@ vim.opt.backspace:append { "nostop" } -- Don't stop backspace at insert
 if vim.fn.has "nvim-0.9" == 1 then
   vim.opt.diffopt:append "linematch:60" -- enable linematch diff algorithm
 end
-local options = astronvim.user_opts("options", {
+local options = neovimium.user_opts("options", {
   opt = {
     breakindent = true, -- Wrap indent to match  line start
     clipboard = "unnamedplus", -- Connection to the system clipboard

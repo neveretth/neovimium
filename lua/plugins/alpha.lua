@@ -24,7 +24,7 @@ return {
     }
     dashboard.section.header.opts.hl = "DashboardHeader"
 
-    local button = require("astronvim.utils").alpha_button
+    local button = require("neovimium.utils").alpha_button
     dashboard.section.buttons.val = {
       button("LDR n", "  New File  "),
       button("LDR f f", "  Find File  "),

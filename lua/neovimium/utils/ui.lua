@@ -2,10 +2,10 @@
 --
 --  Utility functions for easy UI toggles.
 --
--- This module can be loaded with `local ui = require("astronvim.utils.ui")`
+-- This module can be loaded with `local ui = require("neovimium.utils.ui")`
 --
--- @module astronvim.utils.ui
--- @see astronvim.utils
+-- @module neovimium.utils.ui
+-- @see neovimium.utils
 -- @copyright 2022
 -- @license GNU General Public License v3.0
 
@@ -14,7 +14,7 @@ local M = {}
 local function bool2str(bool) return bool and "on" or "off" end
 
 local function ui_notify(str)
-  if vim.g.ui_notifications_enabled then require("astronvim.utils").notify(str) end
+  if vim.g.ui_notifications_enabled then require("neovimium.utils").notify(str) end
 end
 
 --- Toggle notifications for UI toggles
@@ -42,7 +42,7 @@ end
 --- Toggle diagnostics
 function M.toggle_diagnostics()
   vim.g.diagnostics_mode = (vim.g.diagnostics_mode - 1) % 4
-  vim.diagnostic.config(require("astronvim.utils.lsp").diagnostics[vim.g.diagnostics_mode])
+  vim.diagnostic.config(require("neovimium.utils.lsp").diagnostics[vim.g.diagnostics_mode])
   if vim.g.diagnostics_mode == 0 then
     ui_notify "diagnostics off"
   elseif vim.g.diagnostics_mode == 1 then
@@ -206,7 +206,7 @@ end
 --- Toggle URL/URI syntax highlighting rules
 function M.toggle_url_match()
   vim.g.highlighturl_enabled = not vim.g.highlighturl_enabled
-  require("astronvim.utils").set_url_match()
+  require("neovimium.utils").set_url_match()
 end
 
 local last_active_foldcolumn
