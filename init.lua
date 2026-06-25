@@ -361,3 +361,7 @@ vim.cmd [[inoremap <C-k><C-k> <Cmd>lua require'better-digraphs'.digraphs("insert
 -- Largely for LaTeX / helpfile
 vim.cmd [[nmap <leader>uf :set nofoldenable autoindent& smartindent& cindent& indentexpr& tw=80<cr>]]
 
+-- Quick fix for commenting selection and line
+-- Not perfect but it'll do for now!
+vim.cmd [[vmap <leader>/ gc]]
+vim.cmd [[nmap <leader>/ Vgc]]
